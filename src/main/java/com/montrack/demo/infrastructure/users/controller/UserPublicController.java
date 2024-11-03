@@ -4,7 +4,7 @@ import com.montrack.demo.common.response.ApiResponse;
 import com.montrack.demo.infrastructure.users.dto.CreateUserRequestDTO;
 import com.montrack.demo.usecase.user.CreateUserUsecase;
 import com.montrack.demo.usecase.user.GetUsersUsecase;
-import org.apache.coyote.Response;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +22,10 @@ public class UserPublicController {
     @GetMapping
     public ResponseEntity<?> getUsers(){
         return ApiResponse.successfulResponse("Get Users Data Success", getUsersUsecase.getAllUsers());
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getUserById(@PathVariable final Integer id){
+        return ApiResponse.successfulResponse("Get user success", getUsersUsecase.findUserById(id));
     }
 
     @PostMapping

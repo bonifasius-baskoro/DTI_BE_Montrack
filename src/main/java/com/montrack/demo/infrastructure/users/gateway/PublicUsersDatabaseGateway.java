@@ -23,6 +23,13 @@ public class PublicUsersDatabaseGateway implements PublicUsersRepository {
         return jdbcTemplate.query(sql, new PublicUserRowMapper());
     }
 
+    @Override
+    public GetAllUserDto findById (Integer id){
+        String sql = "select id, name, email from montrack_be.users where id = ?";
+        return jdbcTemplate.queryForObject(sql, new PublicUserRowMapper(), id);
+
+    }
+
 
 
 }

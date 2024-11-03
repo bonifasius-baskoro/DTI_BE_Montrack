@@ -20,4 +20,10 @@ public class GetUsersUsecaseImpl implements GetUsersUsecase {
         return publicUsersDatabaseGateway.findAll();
     }
 
+
+    @Override
+    public GetAllUserDto findUserById(Integer id){
+        return publicUsersDatabaseGateway.findById(id);
+    }
+
 }
